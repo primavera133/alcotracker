@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Link, Tab, TabList, Tabs } from "@chakra-ui/react";
+import { useState } from "react";
+import "./App.css";
+import { Register } from "./register";
+import { Statistics } from "./statistics";
 
-function App() {
+enum MainNavAlternatives {
+  "register",
+  "statistics",
+}
+
+export function App() {
+  const [main, setMain] = useState<MainNavAlternatives>(
+    MainNavAlternatives.register
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header"></header>
+      <main>
+        <Tabs>
+          <TabList>
+            <Tab>
+              <Link
+                href="#register"
+                onClick={() => setMain(MainNavAlternatives.register)}
+              >
+                Register
+              </Link>
+            </Tab>
+            <Tab>
+              <Link
+                href="#statistics"
+                onClick={() => setMain(MainNavAlternatives.statistics)}
+              >
+                Statistics
+              </Link>
+            </Tab>
+          </TabList>
+        </Tabs>
+        <Box>
+          {main === MainNavAlternatives.register && <Register />}
+          {main === MainNavAlternatives.statistics && <Statistics />}
+        </Box>
+      </main>
+      <footer>Footer links</footer>
     </div>
   );
 }
-
-export default App;
