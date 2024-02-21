@@ -21,6 +21,8 @@ interface RegisterState {
 
     units: number;
     setUnits: (value: number) => void;
+
+    resetForm: () => void;
 }
 
 export const useRegisterStore = create<RegisterState>()((set) => ({
@@ -43,5 +45,16 @@ export const useRegisterStore = create<RegisterState>()((set) => ({
     set_Vol: value => set({ _vol: value}),
 
     units: 0,
-    setUnits: value => set({units: value})
+    setUnits: value => set({units: value}),
+
+    resetForm: () => set({
+        name: "",
+        num: "1",
+        _num: 1,
+        abv: "",
+        _abv: 0,
+        vol: "",
+        _vol: 0,
+        units: 0
+    })
   }))
