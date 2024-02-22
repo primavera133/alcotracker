@@ -19,18 +19,16 @@ export function AddUnits() {
   const toast = useToast();
 
   const handleAddUnits = () => {
-    for (let i = 1; i <= _num; i++) {
-      addStoredUnit({
-        name,
-        num: "1",
-        _num: 1,
-        abv,
-        _abv,
-        vol,
-        _vol,
-        units: parseFloat((units / i).toFixed(2)),
-      });
-    }
+    addStoredUnit({
+      name,
+      num,
+      _num,
+      abv,
+      _abv,
+      vol,
+      _vol,
+      units,
+    });
 
     resetForm();
     toast({
