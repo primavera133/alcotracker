@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface StoredUnit {
+  date: string;
   name: string;
   num: string;
   _num: number;
@@ -10,6 +11,8 @@ interface StoredUnit {
   vol: string;
   _vol: number;
   units: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface PersistedState {

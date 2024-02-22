@@ -4,6 +4,9 @@ interface RegisterState {
     name: string;
     setName: (value: string) => void;
     
+    dateTime: Date;
+    setDateTime: (value: Date) => void;
+    
     num: string;
     setNum: (value: string) => void;
     _num: number;
@@ -28,6 +31,9 @@ interface RegisterState {
 export const useRegisterStore = create<RegisterState>()((set) => ({
     name: "",
     setName: value => set({ name: value}),
+
+    dateTime: new Date(),
+    setDateTime: value => set({dateTime: value}),
 
     num: "1",
     setNum: value => set({ num: value}),

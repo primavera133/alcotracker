@@ -4,6 +4,7 @@ import { useRegisterStore } from "../stores/registerStore";
 
 export function AddUnits() {
   const name = useRegisterStore((state) => state.name);
+  const dateTime = useRegisterStore((state) => state.dateTime);
   const num = useRegisterStore((state) => state.num);
   const _num = useRegisterStore((state) => state._num);
   const abv = useRegisterStore((state) => state.abv);
@@ -19,8 +20,10 @@ export function AddUnits() {
   const toast = useToast();
 
   const handleAddUnits = () => {
+    const now = new Date().toISOString();
     addStoredUnit({
       name,
+      date: dateTime.toISOString(),
       num,
       _num,
       abv,
@@ -28,6 +31,8 @@ export function AddUnits() {
       vol,
       _vol,
       units,
+      createdAt: now,
+      updatedAt: now,
     });
 
     resetForm();

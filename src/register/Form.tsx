@@ -11,6 +11,10 @@ import { useRegisterStore } from "../stores/registerStore";
 export function Form() {
   const name = useRegisterStore((state) => state.name);
   const setName = useRegisterStore((state) => state.setName);
+
+  const dateTime = useRegisterStore((state) => state.dateTime);
+  const setDateTime = useRegisterStore((state) => state.setDateTime);
+
   const num = useRegisterStore((state) => state.num);
   const setNum = useRegisterStore((state) => state.setNum);
   const set_Num = useRegisterStore((state) => state.set_Num);
@@ -42,6 +46,10 @@ export function Form() {
     set_Vol(_vol);
   }, [vol, set_Vol]);
 
+  const offset = dateTime.getTimezoneOffset();
+  const localDateTime = new Date(dateTime.getTime() - offset * 60000);
+  const formattedDateTimeValue = localDateTime.toISOString().slice(0, 16);
+
   return (
     <FormControl pb={4}>
       <Box px={2} mb={4}>
@@ -52,6 +60,15 @@ export function Form() {
           onChange={(e) => setName(e.target.value)}
         />
         <FormHelperText>Put a name on your drink</FormHelperText>
+      </Box>
+      <Box px={2} mb={4}>
+        <FormLabel>Date</FormLabel>
+        <Input
+          type="datetime-local"
+          value={formattedDateTimeValue}
+          onChange={(e) => setDateTime(new Date(e.target.value))}
+        />
+        <FormHelperText>When did you drink?</FormHelperText>
       </Box>
       <Box px={2} mb={4}>
         <FormLabel>Number</FormLabel>
