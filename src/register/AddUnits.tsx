@@ -22,17 +22,15 @@ export function AddUnits() {
     const now = new Date().toISOString();
     alcoTrackerDB.add("items", {
       itemId: nanoid(),
-      item: {
-        name,
-        date: dateTime.toISOString(),
-        num,
-        _num,
-        abv,
-        _abv,
-        vol,
-        _vol,
-        units,
-      },
+      name,
+      date: dateTime.toISOString(),
+      num,
+      _num,
+      abv,
+      _abv,
+      vol,
+      _vol,
+      units,
       createdAt: now,
       updatedAt: now,
     });

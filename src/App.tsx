@@ -2,11 +2,13 @@ import { Box, Link, Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { initDB } from "./db/db";
+import { List } from "./list";
 import { Register } from "./register";
 import { Statistics } from "./statistics";
 
 enum MainNavAlternatives {
   "register",
+  "list",
   "statistics",
 }
 
@@ -35,6 +37,14 @@ export function App() {
             </Tab>
             <Tab>
               <Link
+                href="#list"
+                onClick={() => setMain(MainNavAlternatives.list)}
+              >
+                List
+              </Link>
+            </Tab>
+            <Tab>
+              <Link
                 href="#statistics"
                 onClick={() => setMain(MainNavAlternatives.statistics)}
               >
@@ -45,6 +55,7 @@ export function App() {
         </Tabs>
         <Box>
           {main === MainNavAlternatives.register && <Register />}
+          {main === MainNavAlternatives.list && <List />}
           {main === MainNavAlternatives.statistics && <Statistics />}
         </Box>
       </main>

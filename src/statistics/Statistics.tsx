@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { StoredItem, alcoTrackerDB } from "../db/db";
 
@@ -20,7 +20,12 @@ export function Statistics() {
 
     <Box id="statistics">
       <Heading as="h1">STATS VIEW</Heading>
-      {results?.map((r) => JSON.stringify(r))}
+
+      <UnorderedList>
+        {results?.map((r, idx) => (
+          <ListItem key={`item-${idx}`}>{JSON.stringify(r)} </ListItem>
+        ))}
+      </UnorderedList>
     </Box>
   );
 }
