@@ -1,8 +1,15 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { usePersistedStore } from "../stores/persistedStore";
+import { useEffect, useState } from "react";
+import { StoredItem, alcoTrackerDB } from "../db/db";
 
 export function Statistics() {
-  const storedUnits = usePersistedStore((state) => state.storedUnits);
+  const [results, setResults] = useState<StoredItem[]>();
+
+  useEffect(() => {
+    (async () => {
+      setResults(await alcoTrackerDB.getAll("items"));
+    })();
+  }, []);
 
   return (
     // this week
@@ -13,9 +20,7 @@ export function Statistics() {
 
     <Box id="statistics">
       <Heading as="h1">STATS VIEW</Heading>
-      {storedUnits.map((unit) => (
-        <Box>{JSON.stringify(unit)}</Box>
-      ))}
+      {results?.map((r) => JSON.stringify(r))}
     </Box>
   );
 }

@@ -1,5 +1,6 @@
 import { Box, Button, useToast } from "@chakra-ui/react";
-import { usePersistedStore } from "../stores/persistedStore";
+import { nanoid } from "nanoid";
+import { alcoTrackerDB } from "../db/db";
 import { useRegisterStore } from "../stores/registerStore";
 
 export function AddUnits() {
@@ -15,22 +16,23 @@ export function AddUnits() {
   const units = useRegisterStore((state) => state.units);
   const resetForm = useRegisterStore((state) => state.resetForm);
 
-  const addStoredUnit = usePersistedStore((state) => state.addStoredUnit);
-
   const toast = useToast();
 
   const handleAddUnits = () => {
     const now = new Date().toISOString();
-    addStoredUnit({
-      name,
-      date: dateTime.toISOString(),
-      num,
-      _num,
-      abv,
-      _abv,
-      vol,
-      _vol,
-      units,
+    alcoTrackerDB.add("items", {
+      itemId: nanoid(),
+      item: {
+        name,
+        date: dateTime.toISOString(),
+        num,
+        _num,
+        abv,
+        _abv,
+        vol,
+        _vol,
+        units,
+      },
       createdAt: now,
       updatedAt: now,
     });

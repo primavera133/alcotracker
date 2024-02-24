@@ -1,6 +1,7 @@
 import { Box, Link, Tab, TabList, Tabs } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import { initDB } from "./db/db";
 import { Register } from "./register";
 import { Statistics } from "./statistics";
 
@@ -13,6 +14,10 @@ export function App() {
   const [main, setMain] = useState<MainNavAlternatives>(
     MainNavAlternatives.register
   );
+
+  useEffect(() => {
+    (async () => await initDB())();
+  }, []);
 
   return (
     <div className="App">
