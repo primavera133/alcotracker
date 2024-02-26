@@ -40,7 +40,7 @@ export function Records() {
 
   useEffect(() => {
     (async () => {
-      const lastRecords = await queryGetLast(10);
+      const lastRecords = await queryGetLast(100);
       setRecords(lastRecords);
       setGroupedRecords(lastRecords);
     })();
@@ -105,7 +105,10 @@ export function Records() {
                           alignItems="center"
                         >
                           <ListIcon as={MdArrowRight} />
-                          <strong>{record.name}</strong>, {record.units} units
+                          <strong>
+                            {record.num} {record.name}
+                          </strong>
+                          , {record.units} units
                         </Flex>
                       ) : (
                         <Card my={4}>
@@ -117,7 +120,7 @@ export function Records() {
                                 size="md"
                                 onClick={() => handleItemClick(record)}
                               >
-                                {record.name}
+                                {record.num} {record.name}
                               </Heading>
                               <Box>
                                 <IconButton
