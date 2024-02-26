@@ -2,6 +2,7 @@ import { Box, Link, Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { initDB } from "./db/db";
+// import { loadDB } from "./db/loadDb";
 import { Records } from "./records";
 import { Register } from "./register";
 import { Statistics } from "./statistics";
