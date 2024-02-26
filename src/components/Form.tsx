@@ -67,7 +67,7 @@ export function Form({ record }: FormProps) {
 
   return (
     <FormControl pb={4}>
-      <Box px={2} mb={4}>
+      <Box mb={4}>
         <FormLabel>Name</FormLabel>
         <Input
           type="text"
@@ -76,7 +76,7 @@ export function Form({ record }: FormProps) {
         />
         <FormHelperText>Put a name on your drink</FormHelperText>
       </Box>
-      <Box px={2} mb={4}>
+      <Box mb={4}>
         <FormLabel>Date</FormLabel>
         <Input
           type="datetime-local"
@@ -85,7 +85,7 @@ export function Form({ record }: FormProps) {
         />
         <FormHelperText>When did you drink?</FormHelperText>
       </Box>
-      <Box px={2} mb={4}>
+      <Box mb={4}>
         <FormLabel>Number</FormLabel>
         <Input
           type="text"
@@ -96,7 +96,7 @@ export function Form({ record }: FormProps) {
         />
         <FormHelperText>How strong was it?</FormHelperText>
       </Box>
-      <Box px={2} mb={4}>
+      <Box mb={4}>
         <FormLabel>ABV %</FormLabel>
         <Input
           type="text"
@@ -105,7 +105,7 @@ export function Form({ record }: FormProps) {
         />
         <FormHelperText>How strong was it?</FormHelperText>
       </Box>
-      <Box px={2} mb={4}>
+      <Box mb={4}>
         <FormLabel>Volume cl</FormLabel>
         <Input
           type="text"

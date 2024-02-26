@@ -12,8 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import { FaGlassWater } from "react-icons/fa6";
-import { MdClose, MdEdit } from "react-icons/md";
+import { MdArrowRight, MdClose, MdEdit } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import { AddUnits } from "../components/AddUnits";
 import { Form } from "../components/Form";
@@ -45,6 +44,7 @@ export function Records() {
       setRecords(lastRecords);
       setGroupedRecords(lastRecords);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -52,6 +52,7 @@ export function Records() {
       setRecordId(selectedRecord.recordId);
       setCreatedAt(selectedRecord.createdAt);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditable, selectedRecord]);
 
   const handleItemClick = (record: StoredRecord) => {
@@ -84,36 +85,39 @@ export function Records() {
   return (
     <>
       <Box id="statistics" maxWidth={"lg"}>
-        <Heading as="h1" mb={4}>
+        <Heading as="h1" my={4} mx={4}>
           Your listed records
         </Heading>
 
         {groupedRecords && (
-          <List>
+          <List m={4}>
             {Object.keys(groupedRecords).map((records, idx) => (
               <ListItem key={records} mb={4}>
                 <Heading as="h2" size={"md"}>
                   {records}
                 </Heading>
-                <List>
+                <List my={2}>
                   {groupedRecords[records]?.map((record, idx) => (
                     <ListItem key={`item-${idx}`} my={2}>
                       {selectedRecord?.recordId !== record.recordId ? (
-                        <Flex onClick={() => handleItemClick(record)}>
-                          <ListIcon as={FaGlassWater} ml={4} />
+                        <Flex
+                          onClick={() => handleItemClick(record)}
+                          alignItems="center"
+                        >
+                          <ListIcon as={MdArrowRight} />
                           <strong>{record.name}</strong>, {record.units} units
                         </Flex>
                       ) : (
-                        <Card m={4}>
+                        <Card my={4}>
                           <CardBody>
                             <Flex justify="space-between">
                               <Heading
                                 as="h4"
+                                mb={4}
                                 size="md"
-                                mb={2}
                                 onClick={() => handleItemClick(record)}
                               >
-                                {record.name}, {record.units} units
+                                {record.name}
                               </Heading>
                               <Box>
                                 <IconButton
@@ -136,24 +140,19 @@ export function Records() {
                             ) : (
                               <>
                                 <List mb={2}>
+                                  <ListItem>
+                                    Date:{" "}
+                                    {format(record.date, "yyyy-MM-dd : HH:mm")}
+                                  </ListItem>
                                   <ListItem>Amount: {record.num}</ListItem>
                                   <ListItem>ABV: {record.abv}%</ListItem>
                                   <ListItem mb={2}>
                                     Volume: {record.vol} cl
                                   </ListItem>
                                   <ListItem>
-                                    Created at:{" "}
-                                    {format(
-                                      record.createdAt,
-                                      "yyyy-MM-dd : HH:mm:ss"
-                                    )}
-                                  </ListItem>
-                                  <ListItem mb={4}>
-                                    Updated at:
-                                    {format(
-                                      record.updatedAt,
-                                      "yyyy-MM-dd : HH:mm:ss"
-                                    )}
+                                    <strong>
+                                      Calculated units: {record.units}
+                                    </strong>
                                   </ListItem>
                                 </List>
                                 <Flex
@@ -166,7 +165,7 @@ export function Records() {
                                     variant="solid"
                                     size="md"
                                     mr={4}
-                                    mb={4}
+                                    my={4}
                                     onClick={editRecord}
                                   >
                                     Edit record
@@ -177,8 +176,7 @@ export function Records() {
                                       leftIcon={<TiDelete />}
                                       variant="solid"
                                       size="md"
-                                      mr={4}
-                                      mb={4}
+                                      my={4}
                                       onClick={() => setIsDeletable(true)}
                                     >
                                       Delete record
@@ -189,8 +187,7 @@ export function Records() {
                                       leftIcon={<TiDelete />}
                                       variant="solid"
                                       size="md"
-                                      mr={4}
-                                      mb={4}
+                                      my={4}
                                       colorScheme="red"
                                       onClick={handleDeleteRecord}
                                     >
