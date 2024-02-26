@@ -2,13 +2,14 @@ import { Box, Link, Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { initDB } from "./db/db";
-import { List } from "./list";
+import { Records } from "./records";
 import { Register } from "./register";
 import { Statistics } from "./statistics";
+import { useRegisterStore } from "./stores/registerStore";
 
 enum MainNavAlternatives {
   "register",
-  "list",
+  "records",
   "statistics",
 }
 
@@ -16,9 +17,18 @@ export function App() {
   const [main, setMain] = useState<MainNavAlternatives>(
     MainNavAlternatives.register
   );
+  const resetForm = useRegisterStore((state) => state.resetForm);
+
+  const handleNav = (whereTo: MainNavAlternatives) => {
+    resetForm();
+    setMain(whereTo);
+  };
 
   useEffect(() => {
-    (async () => await initDB())();
+    (async () => {
+      await initDB();
+      // loadDB();
+    })();
   }, []);
 
   return (
@@ -30,23 +40,23 @@ export function App() {
             <Tab>
               <Link
                 href="#register"
-                onClick={() => setMain(MainNavAlternatives.register)}
+                onClick={() => handleNav(MainNavAlternatives.register)}
               >
                 Register
               </Link>
             </Tab>
             <Tab>
               <Link
-                href="#list"
-                onClick={() => setMain(MainNavAlternatives.list)}
+                href="#records"
+                onClick={() => handleNav(MainNavAlternatives.records)}
               >
-                List
+                Records
               </Link>
             </Tab>
             <Tab>
               <Link
                 href="#statistics"
-                onClick={() => setMain(MainNavAlternatives.statistics)}
+                onClick={() => handleNav(MainNavAlternatives.statistics)}
               >
                 Statistics
               </Link>
@@ -55,7 +65,7 @@ export function App() {
         </Tabs>
         <Box>
           {main === MainNavAlternatives.register && <Register />}
-          {main === MainNavAlternatives.list && <List />}
+          {main === MainNavAlternatives.records && <Records />}
           {main === MainNavAlternatives.statistics && <Statistics />}
         </Box>
       </main>

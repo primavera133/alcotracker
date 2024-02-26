@@ -5,7 +5,7 @@ export const queryGetLast = async (limit: number) => {
     const results: any[] = [];
 
     let cursor = await alcoTrackerDB
-      .transaction("items")
+      .transaction("records")
       .store.openCursor(null, "prev");
 
     while (cursor && results.length < limit) {

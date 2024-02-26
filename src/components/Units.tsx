@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useRegisterStore } from "../stores/registerStore";
-import { calculateUnits } from "./calculateUnits";
+import { calculateUnits } from "../utils/calculateUnits";
 
 export function Units() {
   const name = useRegisterStore((state) => state.name);

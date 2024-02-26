@@ -6,9 +6,14 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { StoredRecord } from "../db/db";
 import { useRegisterStore } from "../stores/registerStore";
 
-export function Form() {
+interface FormProps {
+  record?: StoredRecord | null;
+}
+
+export function Form({ record }: FormProps) {
   const name = useRegisterStore((state) => state.name);
   const setName = useRegisterStore((state) => state.setName);
 
@@ -28,6 +33,16 @@ export function Form() {
   const set_Vol = useRegisterStore((state) => state.set_Vol);
 
   useEffect(() => {
+    if (record) {
+      setName(record.name);
+      setDateTime(new Date(record.date));
+      setNum(record.num);
+      setAbv(record.abv);
+      setVol(record.vol);
+    }
+  }, [record, setName, setDateTime, setNum, setAbv, setVol]);
+
+  useEffect(() => {
     const _num = parseInt(num, 10);
     if (isNaN(_num)) {
       setNum("");
@@ -37,7 +52,7 @@ export function Form() {
   }, [num, setNum, set_Num]);
 
   useEffect(() => {
-    const _abv = parseFloat(abv);
+    const _abv = parseFloat(abv.replace(",", "."));
     set_Abv(_abv);
   }, [abv, set_Abv]);
 
@@ -75,7 +90,9 @@ export function Form() {
         <Input
           type="text"
           value={num ?? ""}
-          onChange={(e) => setNum(e.target.value)}
+          onChange={(e) => {
+            setNum(e.target.value);
+          }}
         />
         <FormHelperText>How strong was it?</FormHelperText>
       </Box>

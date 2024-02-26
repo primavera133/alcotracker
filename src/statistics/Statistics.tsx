@@ -1,13 +1,13 @@
 import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { StoredItem, alcoTrackerDB } from "../db/db";
+import { StoredRecord, alcoTrackerDB } from "../db/db";
 
 export function Statistics() {
-  const [results, setResults] = useState<StoredItem[]>();
+  const [results, setResults] = useState<StoredRecord[]>();
 
   useEffect(() => {
     (async () => {
-      setResults(await alcoTrackerDB.getAll("items"));
+      setResults(await alcoTrackerDB.getAll("records"));
     })();
   }, []);
 

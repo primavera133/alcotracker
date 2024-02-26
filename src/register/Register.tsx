@@ -1,7 +1,7 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { AddUnits } from "./AddUnits";
-import { Form } from "./Form";
-import { Units } from "./Units";
+import { AddUnits } from "../components/AddUnits";
+import { Form } from "../components/Form";
+import { Units } from "../components/Units";
 
 export function Register() {
   return (

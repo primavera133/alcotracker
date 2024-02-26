@@ -1,9 +1,14 @@
 import { DBSchema, IDBPDatabase, openDB } from "idb";
 
-export interface StoredItem {
-  itemId: string;
-  date: string;
+export interface RecordBase {}
+
+export interface StoredRecord extends RecordBase {
+  recordId?: string;
+  createdAt: string;
+  updatedAt: string;
+
   name: string;
+  date: string;
   num: string;
   _num: number;
   abv: string;
@@ -11,13 +16,11 @@ export interface StoredItem {
   vol: string;
   _vol: number;
   units: number;
-  createdAt: string;
-  updatedAt: string;
 }
 
 interface AlcoTrackerDB extends DBSchema {
-  items: {
-    value: StoredItem;
+  records: {
+    value: StoredRecord;
     key: string;
     indexes: { "by-date": number };
   };
@@ -31,10 +34,11 @@ const dbVersion = 1;
 export const initDB = async () => {
   alcoTrackerDB = await openDB<AlcoTrackerDB>(dbName, dbVersion, {
     upgrade(db) {
-      const itemStore = db.createObjectStore("items", {
-        keyPath: "itemId",
+      const recordStore = db.createObjectStore("records", {
+        keyPath: "recordId",
+        autoIncrement: true,
       });
-      itemStore.createIndex("by-date", "date");
+      recordStore.createIndex("by-date", "date");
     },
   });
 };
