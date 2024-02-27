@@ -1,6 +1,6 @@
 import { Box, Button, useToast } from "@chakra-ui/react";
 import { MdSave } from "react-icons/md";
-import { StoredRecord, alcoTrackerDB } from "../db/db";
+import { alcoTrackerDB } from "../db/db";
 import { useRecordsStore } from "../stores/recordsStore";
 import { useRegisterStore } from "../stores/registerStore";
 
@@ -24,7 +24,6 @@ export function AddUnits({ update = false, onClose }: AddUnitsProps) {
   const units = useRegisterStore((state) => state.units);
   const resetForm = useRegisterStore((state) => state.resetForm);
   const updateRecord = useRecordsStore((state) => state.updateRecord);
-  const setGroupedRecords = useRecordsStore((state) => state.setGroupedRecords);
 
   const toast = useToast();
 
@@ -63,7 +62,7 @@ export function AddUnits({ update = false, onClose }: AddUnitsProps) {
     if (!update || !createdAt || !recordId) return;
     const now = new Date().toISOString();
 
-    const updatedRecord: StoredRecord = {
+    const updatedRecord = {
       ...getFormBaseState(),
       recordId: recordId,
       createdAt: createdAt,
