@@ -119,9 +119,7 @@ export function Records() {
                                 mb={4}
                                 size="md"
                                 onClick={() => handleItemClick(record)}
-                              >
-                                {record.num} {record.name}
-                              </Heading>
+                              ></Heading>
                               <Box>
                                 <IconButton
                                   icon={<MdClose />}

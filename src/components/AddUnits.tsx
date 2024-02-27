@@ -83,16 +83,25 @@ export function AddUnits({ update = false, onClose }: AddUnitsProps) {
     });
   };
 
-  if (!units) return null;
+  const isEnabled = !!units;
 
   return (
     <Box p={2}>
       {update ? (
-        <Button leftIcon={<MdSave />} onClick={handleUpdateRecord}>
+        <Button
+          leftIcon={<MdSave />}
+          onClick={handleUpdateRecord}
+          type="submit"
+        >
           Update record
         </Button>
       ) : (
-        <Button leftIcon={<MdSave />} onClick={handleAddUnits}>
+        <Button
+          type="submit"
+          leftIcon={<MdSave />}
+          onClick={handleAddUnits}
+          isDisabled={!isEnabled}
+        >
           Add {units} Units
         </Button>
       )}

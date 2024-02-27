@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -68,25 +69,33 @@ export function Form({ record }: FormProps) {
   return (
     <FormControl pb={4}>
       <Box mb={4}>
-        <FormLabel>Name</FormLabel>
+        <Flex alignItems="baseline">
+          <FormLabel>What</FormLabel>
+          <FormHelperText color="gray.200">What did you drink?</FormHelperText>
+        </Flex>
         <Input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <FormHelperText>Put a name on your drink</FormHelperText>
       </Box>
       <Box mb={4}>
-        <FormLabel>Date</FormLabel>
+        <Flex alignItems="baseline">
+          <FormLabel>Date</FormLabel>
+          <FormHelperText color="gray.200">When did you drink?</FormHelperText>
+        </Flex>
         <Input
           type="datetime-local"
           value={formattedDateTimeValue}
           onChange={(e) => setDateTime(new Date(e.target.value))}
         />
-        <FormHelperText>When did you drink?</FormHelperText>
       </Box>
       <Box mb={4}>
-        <FormLabel>Number</FormLabel>
+        <Flex alignItems="baseline">
+          <FormLabel>Number</FormLabel>
+          <FormHelperText color="gray.200">How many?</FormHelperText>
+        </Flex>
+
         <Input
           type="text"
           value={num ?? ""}
@@ -94,25 +103,30 @@ export function Form({ record }: FormProps) {
             setNum(e.target.value);
           }}
         />
-        <FormHelperText>How strong was it?</FormHelperText>
       </Box>
       <Box mb={4}>
-        <FormLabel>ABV %</FormLabel>
+        <Flex alignItems="baseline">
+          <FormLabel>ABV %</FormLabel>
+          <FormHelperText color="gray.200">How strong?</FormHelperText>
+        </Flex>
+
         <Input
           type="text"
           value={abv ?? ""}
           onChange={(e) => setAbv(e.target.value)}
         />
-        <FormHelperText>How strong was it?</FormHelperText>
       </Box>
       <Box mb={4}>
-        <FormLabel>Volume cl</FormLabel>
+        <Flex alignItems="baseline">
+          <FormLabel>Volume cl</FormLabel>
+          <FormHelperText color="gray.200">How much?</FormHelperText>
+        </Flex>
+
         <Input
           type="text"
           value={vol ?? ""}
           onChange={(e) => setVol(e.target.value)}
         />
-        <FormHelperText>How large was it?</FormHelperText>
       </Box>
     </FormControl>
   );

@@ -5,7 +5,7 @@ import { Units } from "../components/Units";
 
 export function Register() {
   return (
-    <Box id="register" maxWidth={"lg"} mx={4}>
+    <Box as="form" id="register" maxWidth={"lg"} mx={4}>
       <Heading as="h1" my={4}>
         Add a drink
       </Heading>
