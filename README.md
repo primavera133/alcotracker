@@ -8,3 +8,11 @@ If you install this app, it keeps all data to itself. No database except on your
 
 **NOTE: If you uninstall the app, the data is lost. Make sure you export your data before doing anything drastic.**
 
+##### Tech used
+
+- Create React App
+- IndexedDB for local database
+- IDB for easy use of IndexedDB
+- zustand for state
+- Chakra UI for UI
+- etc
