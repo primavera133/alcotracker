@@ -15,6 +15,10 @@ import { useEffect, useState } from "react";
 import { MdExpandCircleDown } from "react-icons/md";
 import { ListRecords } from "../components/ListRecords";
 import { StoredRecord } from "../db/db";
+import {
+  AdvancedStatistics,
+  queryGetAdvancedStatistics,
+} from "../db/getAdvancedStatistics";
 import { queryGetDateInterval } from "../db/getDateInterval";
 import { useRecordsStore } from "../stores/recordsStore";
 
@@ -23,6 +27,7 @@ export function Statistics() {
   const [detailsThisWeek, setDetailsThisWeek] = useState<boolean>(false);
   const [recordsLastWeek, setRecordsLastWeek] = useState<StoredRecord[]>();
   const [detailsLastWeek, setDetailsLastWeek] = useState<boolean>(false);
+  const [weeklyAverage, setWeeklyAverage] = useState<AdvancedStatistics>();
   const setRecords = useRecordsStore((state) => state.setRecords);
 
   const now = new Date();
@@ -40,6 +45,8 @@ export function Statistics() {
         endOfWeek(subWeeks(now, 1), { weekStartsOn: 1 })
       )
     );
+
+    setWeeklyAverage(await queryGetAdvancedStatistics());
   };
 
   useEffect(() => {
@@ -108,6 +115,45 @@ export function Statistics() {
       <Heading as="h1" m={4}>
         Your statistics
       </Heading>
+
+      <Card bgColor={"#555"} m={4}>
+        <CardHeader pb={1}>
+          <Heading>Weekly average</Heading>
+        </CardHeader>
+        <CardBody pt={0}>
+          <List>
+            <ListItem key="since0">
+              since start: {weeklyAverage?.weeklyAverage.toFixed(2)}
+            </ListItem>
+            <ListItem key="since1">
+              last month: {weeklyAverage?.weeklyAverageLastMonth.toFixed(2)}
+            </ListItem>
+            <ListItem key="since2" mb={2}>
+              last 3 months :{" "}
+              {weeklyAverage?.weeklyAverageLastThreeMonths.toFixed(2)}
+            </ListItem>
+          </List>
+        </CardBody>
+      </Card>
+
+      <Card bgColor={"#555"} m={4}>
+        <CardHeader pb={1}>
+          <Heading>Days of alcohol</Heading>
+        </CardHeader>
+        <CardBody pt={0}>
+          <List>
+            <ListItem key="days">
+              Total: {weeklyAverage?.daysOfAlcohol}
+            </ListItem>
+            <ListItem key="daysLastMonth">
+              Last month: {weeklyAverage?.daysOfAlcoholLastMonth}
+            </ListItem>
+            <ListItem key="daysLastThreeMonths">
+              Last 3 months: {weeklyAverage?.daysOfAlcoholLastThreeMonths}
+            </ListItem>
+          </List>
+        </CardBody>
+      </Card>
 
       <Card bgColor={"#555"} m={4}>
         <CardHeader pb={1}>
