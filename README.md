@@ -1,4 +1,4 @@
-# ALCOTRACKER
+# WIP:ALCOTRACKER
 
 ### A privacy first diary of your alcohol consumption
 
