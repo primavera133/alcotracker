@@ -17,6 +17,7 @@
     "framer-motion": "^11.0.5",
     "idb": "^8.0.0",
     "immer": "^10.0.3",
+    "json-2-csv": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",

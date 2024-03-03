@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { initDB } from "./db/db";
 // import { loadDB } from "./db/loadDb";
+import { Data } from "./data";
 import { Records } from "./records";
 import { Register } from "./register";
 import { Statistics } from "./statistics";
@@ -12,6 +13,7 @@ enum MainNavAlternatives {
   "register",
   "records",
   "statistics",
+  "data",
 }
 
 export function App() {
@@ -38,29 +40,17 @@ export function App() {
       <main>
         <Tabs>
           <TabList>
-            <Tab>
-              <Link
-                href="#register"
-                onClick={() => handleNav(MainNavAlternatives.register)}
-              >
-                Register
-              </Link>
+            <Tab onClick={() => handleNav(MainNavAlternatives.register)}>
+              <Link href="#register">Register</Link>
             </Tab>
-            <Tab>
-              <Link
-                href="#records"
-                onClick={() => handleNav(MainNavAlternatives.records)}
-              >
-                Records
-              </Link>
+            <Tab onClick={() => handleNav(MainNavAlternatives.records)}>
+              <Link href="#records">Records</Link>
             </Tab>
-            <Tab>
-              <Link
-                href="#statistics"
-                onClick={() => handleNav(MainNavAlternatives.statistics)}
-              >
-                Statistics
-              </Link>
+            <Tab onClick={() => handleNav(MainNavAlternatives.statistics)}>
+              <Link href="#statistics">Statistics</Link>
+            </Tab>
+            <Tab onClick={() => handleNav(MainNavAlternatives.data)}>
+              <Link href="#data">Data</Link>
             </Tab>
           </TabList>
         </Tabs>
@@ -68,6 +58,7 @@ export function App() {
           {main === MainNavAlternatives.register && <Register />}
           {main === MainNavAlternatives.records && <Records />}
           {main === MainNavAlternatives.statistics && <Statistics />}
+          {main === MainNavAlternatives.data && <Data />}
         </Box>
       </main>
       <footer>Footer links</footer>

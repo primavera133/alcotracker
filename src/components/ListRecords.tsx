@@ -70,9 +70,10 @@ export function ListRecords({ onClose }: { onClose?: () => void }) {
     if (onClose) onClose();
   };
 
-  const handleDeleteRecord = () => {
+  const handleDeleteRecord = async () => {
     if (!selectedRecord?.recordId) return;
-    alcoTrackerDB.delete("records", selectedRecord.recordId);
+    console.log("selectedRecord?.recordId", selectedRecord?.recordId);
+    await alcoTrackerDB.delete("records", selectedRecord.recordId);
     deleteRecord(selectedRecord);
     setSelectedRecord(null);
     setIsDeletable(false);

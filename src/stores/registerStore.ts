@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 interface RegisterState {
-  recordId?: string;
-  setRecordId: (value: string) => void;
+  recordId?: IDBKeyRange;
+  setRecordId: (value: IDBKeyRange) => void;
 
   name: string;
   setName: (value: string) => void;
