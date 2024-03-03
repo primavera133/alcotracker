@@ -8,6 +8,10 @@ If you install this app, it keeps all data to itself. No database except on your
 
 **NOTE: If you uninstall the app, the data is lost. Make sure you export your data before doing anything drastic.**
 
+Hosted on Github Pages at: [myrenas.se/alcotracker](https://myrenas.se/alcotracker)
+
+How to install: [read here](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Installing)
+
 ##### Tech used
 
 - Create React App

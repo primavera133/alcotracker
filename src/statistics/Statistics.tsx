@@ -51,6 +51,7 @@ export function Statistics() {
 
   useEffect(() => {
     getStatistics();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // This week
