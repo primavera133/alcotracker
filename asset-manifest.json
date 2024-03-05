@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/alcotracker/static/css/main.c6e76b3f.css",
-    "main.js": "/alcotracker/static/js/main.72f66dc9.js",
+    "main.js": "/alcotracker/static/js/main.4ae36787.js",
     "service-worker.js": "/alcotracker/service-worker.js",
     "index.html": "/alcotracker/index.html",
     "main.c6e76b3f.css.map": "/alcotracker/static/css/main.c6e76b3f.css.map",
-    "main.72f66dc9.js.map": "/alcotracker/static/js/main.72f66dc9.js.map"
+    "main.4ae36787.js.map": "/alcotracker/static/js/main.4ae36787.js.map"
   },
   "entrypoints": [
     "static/css/main.c6e76b3f.css",
-    "static/js/main.72f66dc9.js"
+    "static/js/main.4ae36787.js"
   ]
 }
