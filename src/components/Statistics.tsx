@@ -13,7 +13,6 @@ import {
 import { endOfWeek, format, getDay, startOfWeek, subWeeks } from "date-fns";
 import { useEffect, useState } from "react";
 import { MdExpandCircleDown } from "react-icons/md";
-import { ListRecords } from "../components/ListRecords";
 import { StoredRecord } from "../db/db";
 import {
   AdvancedStatistics,
@@ -21,6 +20,7 @@ import {
 } from "../db/getAdvancedStatistics";
 import { queryGetDateInterval } from "../db/getDateInterval";
 import { useRecordsStore } from "../stores/recordsStore";
+import { ListRecords } from "./ListRecords";
 
 export function Statistics() {
   const [recordsThisWeek, setRecordsThisWeek] = useState<StoredRecord[]>();

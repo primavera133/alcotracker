@@ -1,9 +1,9 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { ListRecords } from "../components/ListRecords";
 import { alcoTrackerDB } from "../db/db";
 import { queryGetRecords } from "../db/getRecords";
 import { useRecordsStore } from "../stores/recordsStore";
+import { ListRecords } from "./ListRecords";
 
 const batchSize = 10;
 

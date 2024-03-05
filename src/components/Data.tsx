@@ -113,12 +113,8 @@ export function Data() {
     }
   };
 
-  useEffect(() => {
-    console.log("file", files);
-  }, [files]);
-
   return (
-    <Box id="statistics" maxWidth={"lg"}>
+    <Box maxWidth={"lg"}>
       <Heading as="h1" m={4}>
         Your data
       </Heading>
