@@ -69,6 +69,7 @@ registerRoute(
       // least-recently used images are removed.
       new ExpirationPlugin({ maxEntries: 50 }),
     ],
+  })
 );
 
 // This allows the web app to trigger skipWaiting via
