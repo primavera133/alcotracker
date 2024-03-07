@@ -14,6 +14,7 @@ import { createHandlerBoundToURL, precacheAndRoute } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { NetworkFirst } from "workbox-strategies";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const appVersion = "0.1.0";
 
 declare const self: ServiceWorkerGlobalScope;
