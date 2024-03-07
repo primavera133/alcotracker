@@ -28,7 +28,7 @@ export function Layout() {
               <Link>Records</Link>
             </Tab>
             <Tab onClick={() => handleClick("/statistics")}>
-              <Link href="#statistics">Statistics</Link>
+              <Link>Statistics</Link>
             </Tab>
             <Tab onClick={() => handleClick("/data")}>
               <Link>Data</Link>
