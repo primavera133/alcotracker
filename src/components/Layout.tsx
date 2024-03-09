@@ -1,4 +1,13 @@
-import { Flex, Icon, Image, Link, Tab, TabList, Tabs } from "@chakra-ui/react";
+import {
+  Flex,
+  Icon,
+  Image,
+  Link,
+  Tab,
+  TabList,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
 
 import { FaInfo } from "react-icons/fa";
 import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
@@ -45,10 +54,17 @@ export function Layout() {
         <Outlet />
       </main>
       <footer>
-        <Flex borderTop="2px solid grey" p={2} justifyItems="center">
+        <Flex
+          borderTop="2px solid grey"
+          p={2}
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <RouterLink to="/about">
             <Icon as={FaInfo} /> About alcotracker
           </RouterLink>
+
+          <Text m={4}>Version {process.env.REACT_APP_VERSION}</Text>
         </Flex>
       </footer>
     </div>

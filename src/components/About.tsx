@@ -8,6 +8,17 @@ export function About() {
         About Alcotracker
       </Heading>
 
+      <Text m={4}>
+        Did you ever consider how much you drink, but don't think that's anyone
+        elses business? Not something you want to share with app makers,
+        advertisers or any one else, really?
+      </Text>
+      <Text m={4}>
+        This app let's you keep track of your consumption. It aplies no moral
+        and does not tell you if you drink too much. It only helps you record
+        and gives you some simple statistics.
+      </Text>
+
       <Heading as="h2" mx={4} my={2} fontSize={20}>
         Installation
       </Heading>
@@ -27,12 +38,11 @@ export function About() {
       </Heading>
 
       <Text m={4}>
-        This app gives you the possibility to record alcohol intake and get some
-        simple statistics for you own personal use. It aims to not share any
-        data with anyone without your specific control. It does not send any
-        data over network, the only database it uses is locally on your device
-        (IndexedDB).
+        This app aims to not share any data with anyone without you being
+        specifically in control. It does not send any data over internet. The
+        only database it uses is locally on your device.
       </Text>
+
       <Text m={4}>
         However, the developer of this app does not guarantee that your data
         will be kept 100% private. What your phone och computer does with the
@@ -41,14 +51,31 @@ export function About() {
       </Text>
 
       <Heading as="h2" mx={4} my={2} fontSize={20}>
+        Syncing data
+      </Heading>
+
+      <Text m={4}>
+        Since you don't create an account in a central place, there is no way to
+        sync your data automatically between differnet devices. You can export
+        your data manually (as CSV or JSON) and import it if you wish to backup
+        or change to using the app on another device.
+      </Text>
+
+      <Heading as="h2" mx={4} my={2} fontSize={20}>
         Support me
       </Heading>
+
       <Text m={4}>
         You like this app? Show your appreciation at{" "}
         <TextLink href="https://ko-fi.com/jonasmyrenas" isExternal>
           ko-fi
         </TextLink>
       </Text>
+
+      <Heading as="h2" mx={4} my={2} fontSize={20}>
+        Having problems?
+      </Heading>
+
       <Text m={4}>
         If you find any problems with the app, file an issue at{" "}
         <TextLink
