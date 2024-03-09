@@ -7,7 +7,12 @@ export function Home() {
         Alcotracker
       </Heading>
       <Text mb={4}>The privacy-first alcohol tracker</Text>
-      <Image boxSize={"32rem"} src="/alcotracker.jpeg" mb={4} />
+      <Image
+        boxSize={"32rem"}
+        objectFit="contain"
+        src="/alcotracker.jpeg"
+        mb={4}
+      />
     </Box>
   );
 }

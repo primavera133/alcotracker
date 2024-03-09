@@ -19,7 +19,7 @@ export function Layout() {
         <Tabs>
           <TabList>
             <Tab onClick={() => handleClick("/")}>
-              <Image boxSize="32px" src="/alcotracker.jpeg" />
+              <Image src="/alcotracker.jpeg" boxSize="32px" objectFit="cover" />
             </Tab>
             <Tab onClick={() => handleClick("/register")}>
               <Link>Register</Link>
