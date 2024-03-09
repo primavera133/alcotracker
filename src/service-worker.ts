@@ -15,7 +15,7 @@ import { registerRoute } from "workbox-routing";
 import { NetworkFirst } from "workbox-strategies";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const appVersion = "0.1.4";
+const appVersion = "0.1.5";
 
 declare const self: ServiceWorkerGlobalScope;
 
