@@ -13,6 +13,7 @@ export function Home() {
         src="/alcotracker.jpeg"
         mb={4}
       />
+      Version {process.env.REACT_APP_VERSION}
     </Box>
   );
 }

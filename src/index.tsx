@@ -7,6 +7,8 @@ import "./index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import theme from "./theme";
 
+console.log("Alcotracker version", `${process.env.REACT_APP_VERSION}`);
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
