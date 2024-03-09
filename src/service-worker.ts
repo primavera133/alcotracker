@@ -82,3 +82,27 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+// Cache strategy: Network first
+self.addEventListener("fetch", (event: FetchEvent) => {
+  event.respondWith(
+    (async function (): Promise<Response> {
+      try {
+        const response = await fetch(event.request);
+        if (response) {
+          return response;
+        } else {
+          throw new Error("Response not found");
+        }
+      } catch (err) {
+        const cachedResponse = await caches.match(event.request);
+        if (cachedResponse) {
+          return cachedResponse;
+        } else {
+          // Handle case when both fetch and cache retrieval fail
+          return new Response("Not found", { status: 404 });
+        }
+      }
+    })()
+  );
+});
