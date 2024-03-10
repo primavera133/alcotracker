@@ -1,13 +1,4 @@
-import {
-  Flex,
-  Icon,
-  Image,
-  Link,
-  Tab,
-  TabList,
-  Tabs,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Icon, Image, Tab, TabList, Tabs, Text } from "@chakra-ui/react";
 
 import { FaInfo } from "react-icons/fa";
 import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
@@ -27,7 +18,12 @@ export function Layout() {
       <nav>
         <Tabs>
           <TabList>
-            <Tab onClick={() => handleClick("/")} p={0} px={2}>
+            <Tab
+              onClick={() => handleClick("/")}
+              p={0}
+              px={2}
+              data-testId="nav-home"
+            >
               <Image
                 src="/alcotracker.jpeg"
                 boxSize="32px"
@@ -35,17 +31,33 @@ export function Layout() {
                 minWidth="32px"
               />
             </Tab>
-            <Tab onClick={() => handleClick("/register")} px={2}>
-              <Link>Register</Link>
+            <Tab
+              onClick={() => handleClick("/register")}
+              px={2}
+              data-TestId="nav-register"
+            >
+              Register
             </Tab>
-            <Tab onClick={() => handleClick("/records")} px={2}>
-              <Link>Records</Link>
+            <Tab
+              onClick={() => handleClick("/records")}
+              px={2}
+              data-TestId="nav-records"
+            >
+              Records
             </Tab>
-            <Tab onClick={() => handleClick("/statistics")} px={2}>
-              <Link>Statistics</Link>
+            <Tab
+              onClick={() => handleClick("/statistics")}
+              px={2}
+              data-TestId="nav-statistics"
+            >
+              Statistics
             </Tab>
-            <Tab onClick={() => handleClick("/data")} px={2}>
-              <Link>Data</Link>
+            <Tab
+              onClick={() => handleClick("/data")}
+              px={2}
+              data-TestId="nav-data"
+            >
+              Data
             </Tab>
           </TabList>
         </Tabs>
@@ -60,7 +72,7 @@ export function Layout() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <RouterLink to="/about">
+          <RouterLink to="/about" data-testId="footer-about">
             <Icon as={FaInfo} /> About alcotracker
           </RouterLink>
 
