@@ -37,7 +37,7 @@ test("import data", async ({ page }) => {
     page.getByRole("heading", { name: "1 rött gött vin" })
   ).toBeVisible();
 
-  await expect(page.getByText("Date: 2024-02-29 : 12:46")).toBeVisible();
+  await expect(page.getByText(/Date: 2024-02-29 : \d\d:46/)).toBeVisible(); // timezone adjustments
   await expect(page.getByText("ABV: 11.5%")).toBeVisible();
   await expect(page.getByText("Volume: 20 cl")).toBeVisible();
   await expect(page.getByText("Calculated units: 2.3")).toBeVisible();
