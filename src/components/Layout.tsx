@@ -22,7 +22,7 @@ export function Layout() {
               onClick={() => handleClick("/")}
               p={0}
               px={2}
-              data-testId="nav-home"
+              data-testid="nav-home"
             >
               <Image
                 src="/alcotracker.jpeg"
@@ -34,28 +34,28 @@ export function Layout() {
             <Tab
               onClick={() => handleClick("/register")}
               px={2}
-              data-TestId="nav-register"
+              data-testid="nav-register"
             >
               Register
             </Tab>
             <Tab
               onClick={() => handleClick("/records")}
               px={2}
-              data-TestId="nav-records"
+              data-testid="nav-records"
             >
               Records
             </Tab>
             <Tab
               onClick={() => handleClick("/statistics")}
               px={2}
-              data-TestId="nav-statistics"
+              data-testid="nav-statistics"
             >
               Statistics
             </Tab>
             <Tab
               onClick={() => handleClick("/data")}
               px={2}
-              data-TestId="nav-data"
+              data-testid="nav-data"
             >
               Data
             </Tab>
@@ -72,7 +72,7 @@ export function Layout() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <RouterLink to="/about" data-testId="footer-about">
+          <RouterLink to="/about" data-testid="footer-about">
             <Icon as={FaInfo} /> About alcotracker
           </RouterLink>
 

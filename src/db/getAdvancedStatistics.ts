@@ -1,4 +1,5 @@
 import {
+  differenceInDays,
   differenceInWeeks,
   format,
   isAfter,
@@ -13,6 +14,7 @@ export interface AdvancedStatistics {
   weeklyAverageLastMonth: number;
   weeklyAverageLastThreeMonths: number;
   earliestWeek: string;
+  amountOfDaysInTotal: number;
   amountOfWeeksInTotal: number;
   daysOfAlcohol: number;
   daysOfAlcoholLastMonth: number;
@@ -70,6 +72,7 @@ export const queryGetAdvancedStatistics =
         cursor = await cursor.continue();
       }
 
+      const amountOfDaysInTotal = differenceInDays(now, earliestWeek) + 1;
       const amountOfWeeksInTotal = differenceInWeeks(now, earliestWeek) + 1;
 
       const weeklyAverage = totalUnits / amountOfWeeksInTotal;
@@ -82,6 +85,7 @@ export const queryGetAdvancedStatistics =
         weeklyAverageLastMonth,
         weeklyAverageLastThreeMonths,
         earliestWeek,
+        amountOfDaysInTotal,
         amountOfWeeksInTotal,
         daysOfAlcohol: daysOfAlcohol.size,
         daysOfAlcoholLastMonth: daysOfAlcoholLastMonth.size,

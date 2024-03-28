@@ -119,45 +119,6 @@ export function Statistics() {
 
       <Card bgColor={"#555"} m={4}>
         <CardHeader pb={1}>
-          <Heading>Weekly average</Heading>
-        </CardHeader>
-        <CardBody pt={0}>
-          <List>
-            <ListItem key="since0">
-              since start: {weeklyAverage?.weeklyAverage.toFixed(2)}
-            </ListItem>
-            <ListItem key="since1">
-              last month: {weeklyAverage?.weeklyAverageLastMonth.toFixed(2)}
-            </ListItem>
-            <ListItem key="since2" mb={2}>
-              last 3 months :{" "}
-              {weeklyAverage?.weeklyAverageLastThreeMonths.toFixed(2)}
-            </ListItem>
-          </List>
-        </CardBody>
-      </Card>
-
-      <Card bgColor={"#555"} m={4}>
-        <CardHeader pb={1}>
-          <Heading>Days of alcohol</Heading>
-        </CardHeader>
-        <CardBody pt={0}>
-          <List>
-            <ListItem key="days">
-              Total: {weeklyAverage?.daysOfAlcohol}
-            </ListItem>
-            <ListItem key="daysLastMonth">
-              Last month: {weeklyAverage?.daysOfAlcoholLastMonth}
-            </ListItem>
-            <ListItem key="daysLastThreeMonths">
-              Last 3 months: {weeklyAverage?.daysOfAlcoholLastThreeMonths}
-            </ListItem>
-          </List>
-        </CardBody>
-      </Card>
-
-      <Card bgColor={"#555"} m={4}>
-        <CardHeader pb={1}>
           <Flex alignItems="center" justifyContent="space-between">
             <Heading>
               <Flex alignItems="baseline">
@@ -181,14 +142,15 @@ export function Statistics() {
             />
           </Flex>
         </CardHeader>
+
         <CardBody pt={0}>
           <List>
-            <ListItem key="units">Units: {unitsThisWeek}</ListItem>
+            <ListItem key="units">Total units: {unitsThisWeek}</ListItem>
+            <ListItem>Average per day: {averagePerDayThisWeek}</ListItem>
             <ListItem key="num">
               Days of drinking: {daysOfDrinkingThisWeek} out of{" "}
               {dayThisWeekSoFar}
             </ListItem>
-            <ListItem>Average per day: {averagePerDayThisWeek}</ListItem>
           </List>
           {detailsThisWeek && (
             <Box mt={4}>
@@ -223,19 +185,64 @@ export function Statistics() {
             />
           </Flex>
         </CardHeader>
+
         <CardBody pt={0}>
           <List>
-            <ListItem key="units">Units: {unitsLastWeek}</ListItem>
+            <ListItem key="units">Total units: {unitsLastWeek}</ListItem>
+            <ListItem>Average per day: {averagePerDayLastWeek}</ListItem>
             <ListItem key="num">
               Days of drinking: {daysOfDrinkingLastWeek} out of 7
             </ListItem>
-            <ListItem>Average per day: {averagePerDayLastWeek}</ListItem>
           </List>
           {detailsLastWeek && (
             <Box pt={4}>
               <ListRecords onClose={getStatistics} />
             </Box>
           )}
+        </CardBody>
+      </Card>
+
+      <Card bgColor={"#555"} m={4}>
+        <CardHeader pb={1}>
+          <Heading>Weekly average</Heading>
+        </CardHeader>
+        <CardBody pt={0}>
+          <List>
+            <ListItem key="since0">
+              since start: {weeklyAverage?.weeklyAverage.toFixed(2)}
+            </ListItem>
+            <ListItem key="since1">
+              last 30 days: {weeklyAverage?.weeklyAverageLastMonth.toFixed(2)}
+            </ListItem>
+            <ListItem key="since2" mb={2}>
+              last 90 days :{" "}
+              {weeklyAverage?.weeklyAverageLastThreeMonths.toFixed(2)}
+            </ListItem>
+          </List>
+        </CardBody>
+      </Card>
+
+      <Card bgColor={"#555"} m={4}>
+        <CardHeader pb={1}>
+          <Heading>Days of alcohol</Heading>
+        </CardHeader>
+        <CardBody pt={0}>
+          <List>
+            <ListItem key="days">
+              Total: {weeklyAverage?.daysOfAlcohol} out of{" "}
+              {weeklyAverage?.amountOfDaysInTotal}
+            </ListItem>
+            {weeklyAverage && weeklyAverage.amountOfDaysInTotal >= 30 && (
+              <ListItem key="daysLastMonth">
+                Last 30 days: {weeklyAverage?.daysOfAlcoholLastMonth}
+              </ListItem>
+            )}
+            {weeklyAverage && weeklyAverage.amountOfDaysInTotal >= 90 && (
+              <ListItem key="daysLastThreeMonths">
+                Last 90 days: {weeklyAverage?.daysOfAlcoholLastThreeMonths}
+              </ListItem>
+            )}
+          </List>
         </CardBody>
       </Card>
     </Box>

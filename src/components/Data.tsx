@@ -152,6 +152,7 @@ export function Data() {
             <Button
               onClick={() => setIsDeletable(true)}
               isDisabled={recordsCount <= 0}
+              data-testid="btn-delete"
             >
               Delete all data
             </Button>
@@ -187,8 +188,11 @@ export function Data() {
               type="file"
               id="upload-file"
               onChange={(e) => setFiles(e.target.files)}
+              data-testid="input-import"
             />
-            <Button type="submit">Upload</Button>
+            <Button type="submit" data-testid="btn-import">
+              Upload
+            </Button>
           </form>
         </CardBody>
       </Card>
