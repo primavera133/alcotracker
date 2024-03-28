@@ -13,6 +13,7 @@ import { StoredRecord, alcoTrackerDB, storedRecordsValidator } from "../db/db";
 import * as converter from "json-2-csv";
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { ReadableStream } from "stream/web";
+import { useDbStore } from "../stores/dbStore";
 import { useRecordsStore } from "../stores/recordsStore";
 
 const download = (content: any, fileName: string, contentType: string) => {
@@ -24,6 +25,8 @@ const download = (content: any, fileName: string, contentType: string) => {
 };
 
 export function Data() {
+  const initialized = useDbStore((state) => state.initialized);
+
   const recordsCount = useRecordsStore((state) => state.recordsCount);
   const setRecordsCount = useRecordsStore((state) => state.setRecordsCount);
 
@@ -33,9 +36,11 @@ export function Data() {
   const filesRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    checkRecordsCount();
+    if (initialized) {
+      checkRecordsCount();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialized]);
 
   const checkRecordsCount = async () => {
     setRecordsCount(await alcoTrackerDB.count("records"));

@@ -10,24 +10,38 @@ import { Layout } from "./components/Layout";
 import { Records } from "./components/Records";
 import { Register } from "./components/Register";
 import { Statistics } from "./components/Statistics";
+import { useDbStore } from "./stores/dbStore";
+
+export enum RouterPaths {
+  home = "/",
+  register = "/register",
+  records = "/records",
+  statistics = "/statistics",
+  data = "/data",
+  about = "/about",
+}
 
 export function App() {
+  const setInitialized = useDbStore((state) => state.setInitialized);
+
   useEffect(() => {
     (async () => {
-      await initDB();
+      const dbInitialized = await initDB();
+      setInitialized(dbInitialized);
       // loadDB();
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path={RouterPaths.home} element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/records" element={<Records />} />
-        <Route path="/statistics" element={<Statistics />} />
-        <Route path="/data" element={<Data />} />
-        <Route path="/about" element={<About />} />
+        <Route path={RouterPaths.register} element={<Register />} />
+        <Route path={RouterPaths.records} element={<Records />} />
+        <Route path={RouterPaths.statistics} element={<Statistics />} />
+        <Route path={RouterPaths.data} element={<Data />} />
+        <Route path={RouterPaths.about} element={<About />} />
       </Route>
     </Routes>
   );

@@ -2,12 +2,15 @@ import { Box, Button, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { alcoTrackerDB } from "../db/db";
 import { queryGetRecords } from "../db/getRecords";
+import { useDbStore } from "../stores/dbStore";
 import { useRecordsStore } from "../stores/recordsStore";
 import { ListRecords } from "./ListRecords";
 
 const batchSize = 10;
 
 export function Records() {
+  const initialized = useDbStore((state) => state.initialized);
+
   const recordsCount = useRecordsStore((state) => state.recordsCount);
   const setRecordsCount = useRecordsStore((state) => state.setRecordsCount);
   const recordsOffset = useRecordsStore((state) => state.recordsOffset);
@@ -17,17 +20,21 @@ export function Records() {
 
   useEffect(() => {
     (async () => {
-      setRecordsCount(await alcoTrackerDB.count("records"));
+      if (initialized) {
+        setRecordsCount(await alcoTrackerDB.count("records"));
+      }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialized]);
 
   useEffect(() => {
     (async () => {
-      setRecords(await queryGetRecords(batchSize, recordsOffset));
+      if (initialized) {
+        setRecords(await queryGetRecords(batchSize, recordsOffset));
+      }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [recordsOffset]);
+  }, [initialized, recordsOffset]);
 
   const loadPrevious = async () => {
     setRecordsOffset(recordsOffset - batchSize);

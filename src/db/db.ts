@@ -62,4 +62,5 @@ export const initDB = async () => {
       recordStore.createIndex("by-date", "date");
     },
   });
+  return true;
 };
