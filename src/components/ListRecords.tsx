@@ -87,7 +87,7 @@ export function ListRecords({ onClose }: { onClose?: () => void }) {
           <Heading as="h2" size={"md"}>
             {records}
           </Heading>
-          <List my={2}>
+          <List my={2} data-testid={`record-list-${idx}`}>
             {groupedRecords[records]?.map((record, idx) => (
               <ListItem key={`item-${idx}`} my={2}>
                 {selectedRecord?.recordId !== record.recordId ? (
