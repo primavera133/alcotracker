@@ -19,10 +19,13 @@ import {
   queryGetAdvancedStatistics,
 } from "../db/getAdvancedStatistics";
 import { queryGetDateInterval } from "../db/getDateInterval";
+import { useDbStore } from "../stores/dbStore";
 import { useRecordsStore } from "../stores/recordsStore";
 import { ListRecords } from "./ListRecords";
 
 export function Statistics() {
+  const initialized = useDbStore((state) => state.initialized);
+
   const [recordsThisWeek, setRecordsThisWeek] = useState<StoredRecord[]>();
   const [detailsThisWeek, setDetailsThisWeek] = useState<boolean>(false);
   const [recordsLastWeek, setRecordsLastWeek] = useState<StoredRecord[]>();
@@ -50,9 +53,11 @@ export function Statistics() {
   };
 
   useEffect(() => {
-    getStatistics();
+    if (initialized) {
+      getStatistics();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialized]);
 
   // This week
   const thisWeekStartDate = format(startOfWeek(now), "d/M");

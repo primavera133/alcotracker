@@ -1,12 +1,26 @@
 import { Flex, Icon, Image, Tab, TabList, Tabs, Text } from "@chakra-ui/react";
 
 import { FaInfo } from "react-icons/fa";
-import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
+import {
+  Outlet,
+  Link as RouterLink,
+  useMatch,
+  useNavigate,
+} from "react-router-dom";
+import { RouterPaths } from "../App";
 import { useRegisterStore } from "../stores/registerStore";
 
 export function Layout() {
   const navigate = useNavigate();
   const resetForm = useRegisterStore((state) => state.resetForm);
+
+  let activeTabIndex;
+  if (!!useMatch(RouterPaths.home)) activeTabIndex = 0;
+  if (!!useMatch(RouterPaths.register)) activeTabIndex = 1;
+  if (!!useMatch(RouterPaths.records)) activeTabIndex = 2;
+  if (!!useMatch(RouterPaths.statistics)) activeTabIndex = 3;
+  if (!!useMatch(RouterPaths.data)) activeTabIndex = 4;
+  if (!!useMatch(RouterPaths.about)) activeTabIndex = 5;
 
   const handleClick = (where: string) => {
     resetForm();
@@ -16,7 +30,7 @@ export function Layout() {
   return (
     <div className="App">
       <nav>
-        <Tabs>
+        <Tabs defaultIndex={activeTabIndex}>
           <TabList>
             <Tab
               onClick={() => handleClick("/")}
