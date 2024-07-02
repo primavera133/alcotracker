@@ -1,8 +1,8 @@
-# WIP:ALCOTRACKER
+# ALCOTRACKER
 
 ### A privacy first diary of your alcohol consumption
 
-Did you ever consider how much you drink, but don't think that's something you want to share with app makers, advertisers or any one else, really?
+Did you ever consider how much you drink, but don't think that's something you want to share with app makers, advertisers or any one else, really? Your health is your own concern and you want to take full responsibility for that yourself?
 
 If you install this app, it keeps all data to itself. No database except on your local machine. No traffic to the cloud or anywhere else. You can export the data if you like, but you choose to do so, noone else.
 
