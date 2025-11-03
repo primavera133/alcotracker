@@ -37,7 +37,7 @@
     "workbox-routing": "^7.0.0",
     "workbox-strategies": "^6.6.0",
     "workbox-streams": "^7.0.0",
-    "zustand": "^4.5.2"
+    "zustand": "^5.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
