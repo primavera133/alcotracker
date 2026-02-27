@@ -1,6 +1,6 @@
 {
   "name": "alcotracker",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "dependencies": {
     "ajv": "^8.0.0",
